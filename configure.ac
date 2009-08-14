@@ -35,6 +35,7 @@ m4_define([version],
     major_version.minor_version.micro_version[]maybe_datestamp)
 
 AC_INIT([package_name], [version], [http://code.google.com/p/userdaemons], [package_name])
+AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_SRCDIR([src/userdaemon.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
