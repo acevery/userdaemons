@@ -21,6 +21,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #
 
+AC_PREREQ([2.63])
 # if not 1, append datestamp to the version number.
 m4_define([package_name], [userdaemons])
 m4_define([released], [0])
@@ -34,21 +35,32 @@ m4_define([version],
     major_version.minor_version.micro_version[]maybe_datestamp)
 
 AC_INIT([package_name], [version], [http://code.google.com/p/userdaemons], [package_name])
+AC_CONFIG_SRCDIR([src/userdaemon.c])
+AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_MACRO_DIR([m4])
+
 AM_INIT_AUTOMAKE([1.10])
 AM_MAINTAINER_MODE
-# AC_GNU_SOURCE
 
-# AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_MACRO_DIR([m4])
+# Checks for programs.
 AC_PROG_CC
 
-# OUTPUT files
-AC_CONFIG_FILES([Makefile
-    src/Makefile
-    conf/Makefile
-    m4/Makefile
-    ]
-)
+# Checks for libraries.
 
+# Checks for header files.
+AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_PID_T
+
+# Checks for library functions.
+AC_FUNC_FORK
+AC_FUNC_MALLOC
+AC_CHECK_FUNCS([mkdir strerror])
+
+AC_CONFIG_FILES([Makefile
+                 conf/Makefile
+                 m4/Makefile
+                 src/Makefile])
 AC_OUTPUT
 # EOF

@@ -28,6 +28,8 @@ userdaemon_SOURCES = userdaemon.c \
 userdaemons_SOURCES = userdaemons.c \
 	$(NULL)
 
+LIBS += -lpthread
+
 MAINTAINERCLEANFILES = \
 	Makefile.in \
 	$(NULL)
