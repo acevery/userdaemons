@@ -57,7 +57,9 @@ void *call_userdaemon ( void *cu_arg )
     usr_node *this_node = (usr_node *) cu_arg;
     char cmdstr[100];
     sprintf (cmdstr, "userdaemon %s %u", this_node->name, this_node->runtime);
-    system (cmdstr);
+    if (system (cmdstr) != 0) {
+        fprintf (stderr, "error in start userdaemon with uid: %s\n", this_node->name);
+    }
     return NULL;
 }
 
