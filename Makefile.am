@@ -19,34 +19,18 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #
-SUBDIRS = \
-	src \
-	conf \
-	m4 \
-	$(NULL)
 
-ACLOCAL_AMFLAGS = -I m4
-
-AUX_DIST = \
-	config.guess \
-	config.sub \
-	install-sh \
-	missing \
+sbin_PROGRAMS = userdaemon \
+	userdaemons \
 	$(NULL)
+userdaemon_SOURCES = userdaemon.c \
+	$(NULL)
+userdaemons_SOURCES = userdaemons.c \
+	$(NULL)
+userdaemons_LDFLAGS = -lpthread
 
 MAINTAINERCLEANFILES = \
 	Makefile.in \
-	aclocal.m4 \
-	configure \
-	$(AUX_DIST) \
-	$(NULL)
-
-EXTRA_DIST = \
-	config.rpath \
-	autogen.sh \
-	$(NULL)
-
-noinst_DIST = \
 	$(NULL)
 
 # EOF
