@@ -27,7 +27,7 @@ m4_define([package_name], [userdaemons])
 m4_define([released], [1])
 m4_define([major_version], [1])
 m4_define([minor_version], [0])
-m4_define([micro_version], [0])
+m4_define([micro_version], [1])
 m4_define(maybe_datestamp,
     m4_esyscmd([if test x]released[ != x1; then date +.%Y%m%d | tr -d '\n\r'; fi]))
 
