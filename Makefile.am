@@ -27,13 +27,6 @@ SUBDIRS = \
 
 ACLOCAL_AMFLAGS = -I m4
 
-AUX_DIST = \
-	config.guess \
-	config.sub \
-	install-sh \
-	missing \
-	$(NULL)
-
 MAINTAINERCLEANFILES = \
 	Makefile.in \
 	aclocal.m4 \

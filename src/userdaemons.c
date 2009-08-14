@@ -173,11 +173,16 @@ int main (int argc, char *const argv[])
         FILE *f_c = fopen (config, "r");
         usr_node *node = NULL;
         usr_node *last_node=NULL;
+        char *rf;
         int rc;
+        char line[256];
         char name[50];
         unsigned int runtime;
         do {
-            rc = fscanf (f_c, "%50[a-z] : %u\n", name, &runtime);
+            rf = fgets (line, 256, f_c);  
+            if (line[0] == '#')
+                continue;
+            rc = sscanf (line, "%50[a-z] : %u\n", name, &runtime);
             if (rc == 2) {
                 last_node = node;
                 node = (usr_node *) malloc (sizeof(usr_node));
@@ -188,9 +193,11 @@ int main (int argc, char *const argv[])
                 strncpy (node->name, name, 50);
                 node->runtime = runtime;
             }
-        } while (rc != EOF); 
+        } while (rf != NULL); 
         
         // reset link list to its head
+        if (node == NULL)
+            exit (EXIT_FAILURE);
         while (node->prev != NULL) {
             node = node->prev;
         }

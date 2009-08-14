@@ -37,7 +37,7 @@ m4_define([version],
 AC_INIT([package_name], [version], [http://code.google.com/p/userdaemons], [package_name])
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_SRCDIR([src/userdaemon.c])
-AC_CONFIG_HEADERS([config.h])
+#AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE([1.10])
@@ -49,7 +49,7 @@ AC_PROG_CC
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h string.h unistd.h])
+AC_CHECK_HEADERS([stdlib.h string.h unistd.h pthread])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_PID_T
