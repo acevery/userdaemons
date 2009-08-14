@@ -1,0 +1,20 @@
+This is a very practicing program (exactly, two) with pthread and basic
+coding part of C Language. I formerly want to write it with python :)
+After thinking a while, I decide to start my very first real program of
+pthread.
+
+With CONFIG_USER_SCHED=y in linux kernel, the rt sched program as
+pulseaudio, jackd would not get the rt sched before explicit set the
+realtime cpu bandwidth for them. However, you could not set this before
+there is at least one process running with the corresponding uid.
+Obviously, pulseaudio would not login first before his starting.
+
+This tiny program start daemons as the given uid, and then modify the
+/sys/kernel/uids/0/cpu_rt_runtime and the set the corresponding
+cpu_rt_runtime in /sys/kernel/uids/. So when the program running with
+the given uid can get the rt sched as they need.
+
+The pids of the started daemon would stored in files of the uid under
+/var/run/userdaemon/.
+
+
