@@ -1,0 +1,33 @@
+#!/sbin/runscript
+# Copyright 1999-2009 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+depend() {
+	before pulseaudio
+	before mpd
+}
+
+checkconfig() {
+	if ! [ -f /etc/userdaemons.conf ]; then
+		eerror "Configuration file /etc/userdaemons.conf does not exist."
+		return 1
+	fi
+
+	return 0
+}
+
+start() {
+	checkconfig || return 1
+
+	ebegin "Starting UserDaemons"
+	userdaemons -s
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping UserDaemons"
+	userdaemons -p
+	eend $? 
+}
+
