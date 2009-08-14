@@ -182,7 +182,7 @@ int main (int argc, char *const argv[])
             rf = fgets (line, 256, f_c);  
             if (line[0] == '#')
                 continue;
-            rc = sscanf (line, "%50[a-z] : %u\n", name, &runtime);
+            rc = sscanf (line, " %50[a-z] : %u\n", name, &runtime);
             if (rc == 2) {
                 last_node = node;
                 node = (usr_node *) malloc (sizeof(usr_node));

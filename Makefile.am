@@ -23,6 +23,7 @@ SUBDIRS = \
 	src \
 	conf \
 	m4 \
+	gentoo \
 	$(NULL)
 
 ACLOCAL_AMFLAGS = -I m4
@@ -36,6 +37,8 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	config.rpath \
+	config.guess \
+	config.sub \
 	autogen.sh \
 	$(NULL)
 

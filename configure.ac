@@ -24,9 +24,9 @@
 AC_PREREQ([2.63])
 # if not 1, append datestamp to the version number.
 m4_define([package_name], [userdaemons])
-m4_define([released], [0])
+m4_define([released], [1])
 m4_define([major_version], [1])
-m4_define([minor_version], [2])
+m4_define([minor_version], [0])
 m4_define([micro_version], [0])
 m4_define(maybe_datestamp,
     m4_esyscmd([if test x]released[ != x1; then date +.%Y%m%d | tr -d '\n\r'; fi]))
@@ -35,21 +35,21 @@ m4_define([version],
     major_version.minor_version.micro_version[]maybe_datestamp)
 
 AC_INIT([package_name], [version], [http://code.google.com/p/userdaemons], [package_name])
-AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_SRCDIR([src/userdaemon.c])
-#AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
-
 AM_INIT_AUTOMAKE([1.10])
 AM_MAINTAINER_MODE
 
+# for gettext
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.16.1])
 # Checks for programs.
 AC_PROG_CC
 
 # Checks for libraries.
 
 # Checks for header files.
-AC_CHECK_HEADERS([stdlib.h string.h unistd.h pthread])
+AC_CHECK_HEADERS([stdlib.h string.h unistd.h pthread.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_PID_T
@@ -62,6 +62,7 @@ AC_CHECK_FUNCS([mkdir strerror])
 AC_CONFIG_FILES([Makefile
                  conf/Makefile
                  m4/Makefile
-                 src/Makefile])
+                 src/Makefile
+                 gentoo/Makefile])
 AC_OUTPUT
 # EOF
